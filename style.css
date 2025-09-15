@@ -1,0 +1,184 @@
+:root {
+    --primary-gold: #ffd700;
+    --dark-bg-1: #1a1a2e;
+    --dark-bg-2: #16213e;
+    --light-text: white;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg-1), var(--dark-bg-2));
+    color: var(--light-text);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container { max-width: 1400px; margin: 0 auto; }
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 2.5rem;
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: 250px max-content 320px;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.controls-panel {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.left-sidebar .button {
+    width: 100%;
+}
+
+.sidebar {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar { width: 8px; }
+.sidebar::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
+.sidebar::-webkit-scrollbar-thumb:hover { background: #ffed4e; }
+
+.map-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.map {
+    display: grid;
+    grid-template-columns: repeat(42, 12px);
+    gap: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--primary-gold);
+    border-radius: 5px;
+    padding: 10px;
+    background: #000;
+}
+
+.cell { width: 12px; height: 12px; border-radius: 2px; cursor: pointer; }
+.cell.mountain { background-color: #333; }
+.cell.rocky { background-color: #666; }
+.cell.plain { background-color: #999; }
+.cell.start { background-color: #ff0000; box-shadow: 0 0 5px #ff0000; cursor: not-allowed; }
+.cell.end { background-color: #00ff00; box-shadow: 0 0 5px #00ff00; cursor: not-allowed; }
+.cell.path { background-color: #00BFFF; box-shadow: 0 0 3px #00BFFF; }
+.cell.house { background-color: var(--primary-gold); box-shadow: 0 0 5px var(--primary-gold); cursor: not-allowed; }
+.cell.current { background-color: #ff69b4; box-shadow: 0 0 8px #ff69b4; animation: pulse 1s infinite; }
+.cell.traveled { background-color: #8A2BE2; box-shadow: 0 0 3px #8A2BE2; }
+
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+.button {
+    padding: 12px; background: linear-gradient(45deg, var(--primary-gold), #ffed4e);
+    color: #333; border: none; border-radius: 8px; font-weight: bold; font-size: 16px;
+    cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+.button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); }
+.button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.button.btn-secondary { background: linear-gradient(45deg, #4e8eff, #2e6fd9); color: white; box-shadow: 0 4px 15px rgba(78, 142, 255, 0.3); }
+.button.btn-secondary:hover { box-shadow: 0 6px 20px rgba(78, 142, 255, 0.4); }
+
+.info-title { color: var(--primary-gold); margin-bottom: 10px; text-align: center; }
+.info-panel { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+.sidebar .info-panel:last-child { margin-bottom: 0; }
+
+.knights-status, .houses-info { display: flex; flex-direction: column; gap: 10px; }
+.knight, .house { display: grid; grid-template-columns: 1fr auto; align-items: center; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 5px; }
+.knight.dead { opacity: 0.6; }
+.knight > span, .house > span { font-size: 0.9rem; }
+
+.stat-controls { display: flex; align-items: center; gap: 5px; }
+.stat-controls input[type="number"] {
+    width: 55px;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    -moz-appearance: textfield;
+}
+.stat-controls input::-webkit-outer-spin-button,
+.stat-controls input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.adjust-btn {
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+}
+.adjust-btn:hover { background-color: rgba(255,255,255,0.2); }
+
+.energy-bar { display: flex; gap: 2px; grid-column: 1 / -1; margin-top: 4px; }
+.energy-point { width: 8px; height: 8px; border-radius: 50%; background: #00ff00; }
+.energy-point.empty { background: #333; }
+.house.completed { color: #28a745; text-decoration: line-through; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 20px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.legend-color { width: 16px; height: 16px; border-radius: 3px; }
+
+.modal-content.custom-modal {
+    background: var(--dark-bg-2); color: var(--light-text); border: 1px solid var(--primary-gold); border-radius: 10px;
+}
+.modal-header.custom-modal-header { border-bottom: 1px solid rgba(255, 215, 0, 0.5); color: var(--primary-gold); }
+.modal-body .result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
+.modal-body .result-item:last-child { border-bottom: none; }
+
+/* --- NOVOS ESTILOS PARA O PAINEL DE MISSÃO --- */
+.mission-briefing {
+    background: rgba(0,0,0,0.3); /* Usa o mesmo fundo dos outros painéis */
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+.mission-briefing p {
+    margin-bottom: 0.75rem;
+}
+.mission-briefing p:last-child {
+    margin-bottom: 0;
+}
+.mission-briefing code {
+    background-color: rgba(0,0,0,0.5);
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #ffed4e;
+    font-family: monospace;
+}
