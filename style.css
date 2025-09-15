@@ -161,13 +161,15 @@ h1 {
 .modal-body .result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
 .modal-body .result-item:last-child { border-bottom: none; }
 
-/* --- NOVOS ESTILOS PARA O PAINEL DE MISSÃO --- */
 .mission-briefing {
-    background: rgba(0,0,0,0.3); /* Usa o mesmo fundo dos outros painéis */
+    background: rgba(0,0,0,0.3);
     padding: 15px;
     border-radius: 8px;
     font-size: 0.85rem;
     line-height: 1.5;
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 0; 
 }
 .mission-briefing p {
     margin-bottom: 0.75rem;
@@ -182,3 +184,8 @@ h1 {
     color: #ffed4e;
     font-family: monospace;
 }
+
+.mission-briefing::-webkit-scrollbar { width: 8px; }
+.mission-briefing::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+.mission-briefing::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
+.mission-briefing::-webkit-scrollbar-thumb:hover { background: #ffed4e; }
