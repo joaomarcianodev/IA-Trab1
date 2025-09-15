@@ -105,6 +105,9 @@ h1 {
 .button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .button.btn-secondary { background: linear-gradient(45deg, #4e8eff, #2e6fd9); color: white; box-shadow: 0 4px 15px rgba(78, 142, 255, 0.3); }
 .button.btn-secondary:hover { box-shadow: 0 6px 20px rgba(78, 142, 255, 0.4); }
+.button.btn-info { background: linear-gradient(45deg, #0dcaf0, #0a9cb5); color: white; box-shadow: 0 4px 15px rgba(13, 202, 240, 0.3); }
+.button.btn-info:hover { box-shadow: 0 6px 20px rgba(13, 202, 240, 0.4); }
+
 
 .info-title { color: var(--primary-gold); margin-bottom: 10px; text-align: center; }
 .info-panel { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
@@ -189,3 +192,74 @@ h1 {
 .mission-briefing::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
 .mission-briefing::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
 .mission-briefing::-webkit-scrollbar-thumb:hover { background: #ffed4e; }
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-gold);
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.profile-info {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-info p i {
+    color: var(--primary-gold);
+    margin-right: 10px;
+}
+
+.profile-info a {
+    color: #ffed4e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.profile-info a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-social {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-social i {
+    font-size: 1.2rem;
+}
+
+.btn-social.github { background-color: #333; }
+.btn-social.github:hover { background-color: #444; transform: translateY(-2px); }
+
+.btn-social.linkedin { background-color: #0077b5; }
+.btn-social.linkedin:hover { background-color: #008cd6; transform: translateY(-2px); }
+
+.btn-social.instagram {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.btn-social.instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
