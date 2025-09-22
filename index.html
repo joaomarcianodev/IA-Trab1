@@ -14,20 +14,20 @@
         <h1>⚡ Cavaleiros do Zodíaco - Algoritmo A* ⚡</h1>
         
         <div class="game-area">
-            
+            <!-- Coluna 1: controles e o história -->
             <div class="left-sidebar">
                 <div class="controls-panel">
                     <button class="button" onclick="calculatePath()" id="calculateBtn">🔍 Calcular Caminho (Busca Heurística A*)</button>
                     <button class="button" onclick="startSimulation()" id="simulateBtn" disabled>▶️ Iniciar Simulação</button>
                     <button class="button" onclick="resetSimulation()">🔄 Resetar Jogo</button>
                     <button class="button btn-secondary" onclick="generateNewMap()">🗺️ Gerar Novo Mapa</button>
-                    <button class="button btn-info" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 Sobre Nós</button>
+                    <button class="button btn-info" data-bs-toggle="modal" data-bs-target="#aboutModal">👨‍💻 Contato</button>
                 </div>
 
                 <div class="info-panel mission-briefing">
                     <h5 class="info-title">📜 Sobre a Missão</h5>
                     <p><strong>Objetivo:</strong> Conduzir os Cavaleiros de Bronze (ponto vermelho) pelas 12 Casas (pontos amarelos) para salvar Atena (ponto verde). O agente deve encontrar o caminho mais rápido e vencer todos os Cavaleiros de Ouro (Chefão de cada casa).</p>
-                    <p><strong>Terreno:</strong> Cada célula possui um tipo de terreno que influencia no tempo. Montanhoso +200min, Rochoso +5min, Plano +1min. Você pode clicar na célula para alterar o seu tipo.</p>
+                    <p><strong>Terreno:</strong> Cada célula possui um tipo de terreno que influencia no tempo. Montanhoso (intransponível), Rochoso (+5min), Plano (+1min). Você pode clicar na célula para alterar o seu tipo.</p>
                     <p><strong>Poder Cósmico:</strong> Cada cavaleiro tem um poder de luta. Valores mais altos reduzem o tempo de batalha. Cada batalha do cavaleiro lhe toma 1 ponto de energia (máximo 5)</p>
                     <p><strong>Dificuldade da Casa:</strong> Representa a força do Cavaleiro de Ouro. Valores mais altos aumentam o tempo de batalha.</p>
                     <p><strong>Cálculo de Tempo:</strong> O tempo da batalha é calculado pela fórmula: 
@@ -36,8 +36,10 @@
                 </div>
             </div>
 
+            <!-- Coluna 2: mapa do jogo e legenda -->
             <div class="map-container">
                 <div id="map" class="map"></div>
+
                 <div class="legend">
                     <div class="legend-item"><div class="legend-color" style="background-color: #333;"></div><span>Montanhoso</span></div>
                     <div class="legend-item"><div class="legend-color" style="background-color: #666;"></div><span>Rochoso</span></div>
@@ -51,6 +53,7 @@
                 </div>
             </div>
 
+            <!-- Coluna 3: informações dinâmicas do jogo -->
             <div class="sidebar">
                 <div class="info-panel">
                     <h5 class="info-title">🕒 Tempo Decorrido</h5>
@@ -67,7 +70,8 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- Modal de resultados -->
     <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content custom-modal">
@@ -79,7 +83,8 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- Modal de sobre mim -->
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content custom-modal about-modal">
@@ -103,8 +108,7 @@
             </div>
         </div>
     </div>
-
-
+    
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>

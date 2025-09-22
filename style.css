@@ -1,44 +1,55 @@
 :root {
-    --primary-gold: #ffd700;
-    --dark-bg-1: #1a1a2e;
-    --dark-bg-2: #16213e;
-    --light-text: white;
+    --primary-gold: #ffd700; /* Cor dourada principal */
+    --dark-bg-1: #1a1a2e;   /* Cor de fundo escura 1 */
+    --dark-bg-2: #16213e;   /* Cor de fundo escura 2 */
+    --light-text: white;     /* Cor do texto principal */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, var(--dark-bg-1), var(--dark-bg-2));
-    color: var(--light-text);
+    font-family: 'Arial', sans-serif; 
+    background: linear-gradient(135deg, var(--dark-bg-1), var(--dark-bg-2)); 
+    color: var(--light-text); 
     min-height: 100vh;
     padding: 20px;
 }
 
-.container { max-width: 1400px; margin: 0 auto; }
+.container { 
+    max-width: 1400px; 
+    margin: 0 auto; 
+}
 
 h1 {
-    text-align: center;
+    text-align: center; 
     margin-bottom: 20px;
-    color: var(--primary-gold);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: var(--primary-gold); 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
     font-size: 2.5rem;
 }
 
+/*! Layout principal do jogo usando CSS Grid */
 .game-area {
     display: grid;
+    /* Define 3 colunas: 250px para a barra esquerda, 'max-content' para o mapa (se ajusta ao conteúdo) e 320px para a barra direita */
     grid-template-columns: 250px max-content 320px;
-    gap: 20px;
-    justify-content: center;
-    align-items: start;
+    gap: 20px; /* Espaço entre as colunas */
+    justify-content: center; /* Centraliza o grid horizontalmente */
+    align-items: start; /* Alinha os itens no topo de suas células */
 }
 
+/* Estilo para a barra lateral esquerda */
 .left-sidebar {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* Painel de controles na barra esquerda */
 .controls-panel {
     background: rgba(255,255,255,0.05);
     border-radius: 10px;
@@ -52,19 +63,22 @@ h1 {
     width: 100%;
 }
 
+/* Estilo geral para as barras laterais */
 .sidebar {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
     overflow-y: auto;
 }
 
+/* Estilização da barra de rolagem (para navegadores baseados em WebKit como Chrome/Safari) */
 .sidebar::-webkit-scrollbar { width: 8px; }
 .sidebar::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
 .sidebar::-webkit-scrollbar-thumb:hover { background: #ffed4e; }
 
+/* Container do mapa */
 .map-container {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
@@ -72,9 +86,10 @@ h1 {
     backdrop-filter: blur(10px);
 }
 
+/* O mapa em si, estilizado como um grid */
 .map {
     display: grid;
-    grid-template-columns: repeat(42, 12px);
+    grid-template-columns: repeat(42, 12px); 
     gap: 1px;
     margin-bottom: 20px;
     border: 2px solid var(--primary-gold);
@@ -83,7 +98,15 @@ h1 {
     background: #000;
 }
 
-.cell { width: 12px; height: 12px; border-radius: 2px; cursor: pointer; }
+/* Estilo base para cada célula do mapa */
+.cell { 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 2px; 
+    cursor: pointer;
+}
+
+/*! Estilos específicos para cada tipo de terreno e elemento do mapa */
 .cell.mountain { background-color: #333; }
 .cell.rocky { background-color: #666; }
 .cell.plain { background-color: #999; }
@@ -94,30 +117,51 @@ h1 {
 .cell.current { background-color: #ff69b4; box-shadow: 0 0 8px #ff69b4; animation: pulse 1s infinite; }
 .cell.traveled { background-color: #8A2BE2; box-shadow: 0 0 3px #8A2BE2; }
 
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-
-.button {
-    padding: 12px; background: linear-gradient(45deg, var(--primary-gold), #ffed4e);
-    color: #333; border: none; border-radius: 8px; font-weight: bold; font-size: 16px;
-    cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+@keyframes pulse { 
+    0%, 100% { transform: scale(1); } 
+    50% { transform: scale(1.2); } 
 }
-.button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); }
-.button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Estilo geral para os botões */
+.button {
+    padding: 12px; 
+    background: linear-gradient(45deg, var(--primary-gold), #ffed4e);
+    color: #333; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-size: 16px;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+.button:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); 
+}
+.button:disabled { 
+    opacity: 0.5; 
+    cursor: not-allowed; 
+    transform: none; 
+}
 .button.btn-secondary { background: linear-gradient(45deg, #4e8eff, #2e6fd9); color: white; box-shadow: 0 4px 15px rgba(78, 142, 255, 0.3); }
 .button.btn-secondary:hover { box-shadow: 0 6px 20px rgba(78, 142, 255, 0.4); }
 .button.btn-info { background: linear-gradient(45deg, #0dcaf0, #0a9cb5); color: white; box-shadow: 0 4px 15px rgba(13, 202, 240, 0.3); }
 .button.btn-info:hover { box-shadow: 0 6px 20px rgba(13, 202, 240, 0.4); }
 
 
+/* Estilos para os painéis de informação nas barras laterais */
 .info-title { color: var(--primary-gold); margin-bottom: 10px; text-align: center; }
 .info-panel { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
 .sidebar .info-panel:last-child { margin-bottom: 0; }
 
+/*! Estilos para as listas de status de cavaleiros e casas */
 .knights-status, .houses-info { display: flex; flex-direction: column; gap: 10px; }
 .knight, .house { display: grid; grid-template-columns: 1fr auto; align-items: center; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 5px; }
 .knight.dead { opacity: 0.6; }
 .knight > span, .house > span { font-size: 0.9rem; }
 
+/* Controles de ajuste de status (poder/dificuldade) */
 .stat-controls { display: flex; align-items: center; gap: 5px; }
 .stat-controls input[type="number"] {
     width: 55px;
@@ -128,6 +172,7 @@ h1 {
     border-radius: 4px;
     -moz-appearance: textfield;
 }
+/* Remove as setas padrão do input number no Chrome/Safari/Edge */
 .stat-controls input::-webkit-outer-spin-button,
 .stat-controls input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -149,14 +194,18 @@ h1 {
 }
 .adjust-btn:hover { background-color: rgba(255,255,255,0.2); }
 
+/* Barra de energia dos cavaleiros */
 .energy-bar { display: flex; gap: 2px; grid-column: 1 / -1; margin-top: 4px; }
 .energy-point { width: 8px; height: 8px; border-radius: 50%; background: #00ff00; }
 .energy-point.empty { background: #333; }
 .house.completed { color: #28a745; text-decoration: line-through; }
+
+/* Legenda do mapa */
 .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 20px; }
 .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
 .legend-color { width: 16px; height: 16px; border-radius: 3px; }
 
+/* Estilos personalizados para os Modais do Bootstrap */
 .modal-content.custom-modal {
     background: var(--dark-bg-2); color: var(--light-text); border: 1px solid var(--primary-gold); border-radius: 10px;
 }
@@ -164,6 +213,7 @@ h1 {
 .modal-body .result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
 .modal-body .result-item:last-child { border-bottom: none; }
 
+/* Estilo para o painel de resumo da missão */
 .mission-briefing {
     background: rgba(0,0,0,0.3);
     padding: 15px;
@@ -188,11 +238,13 @@ h1 {
     font-family: monospace;
 }
 
+/* Estilização da barra de rolagem para o resumo da missão */
 .mission-briefing::-webkit-scrollbar { width: 8px; }
 .mission-briefing::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
 .mission-briefing::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 10px; }
 .mission-briefing::-webkit-scrollbar-thumb:hover { background: #ffed4e; }
 
+/* Estilos para o Modal "Sobre Nós" */
 .profile-pic {
     width: 120px;
     height: 120px;
@@ -201,38 +253,31 @@ h1 {
     object-fit: cover;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
-
 .profile-info {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
 }
-
 .profile-info p {
     margin: 5px 0;
     color: rgba(255, 255, 255, 0.8);
 }
-
 .profile-info p i {
     color: var(--primary-gold);
     margin-right: 10px;
 }
-
 .profile-info a {
     color: #ffed4e;
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .profile-info a:hover {
     color: white;
 }
-
 .social-links {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
-
 .btn-social {
     padding: 10px 20px;
     border: none;
@@ -248,13 +293,10 @@ h1 {
 .btn-social i {
     font-size: 1.2rem;
 }
-
 .btn-social.github { background-color: #333; }
 .btn-social.github:hover { background-color: #444; transform: translateY(-2px); }
-
 .btn-social.linkedin { background-color: #0077b5; }
 .btn-social.linkedin:hover { background-color: #008cd6; transform: translateY(-2px); }
-
 .btn-social.instagram {
     background: #d6249f;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
