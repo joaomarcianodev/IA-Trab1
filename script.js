@@ -345,7 +345,7 @@ function visualizePath() {
     path.forEach(pos => {
         const cell = document.getElementById(`cell-${pos.x}-${pos.y}`);
         //Não colore células de início, fim ou casas
-        if (cell && !['start', 'end', 'house'].some(function(type){cell.classList.contains(type)})) {
+        if (cell && !['start', 'end', 'house'].some(c => cell.classList.contains(c))) {
             cell.classList.add('path');
         }
     });
